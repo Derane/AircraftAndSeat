@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class SeatDtoMapper implements Mapper<Seat, SeatDto>{
+public class SeatDtoMapper implements Mapper<Seat, SeatDto> {
 
 	private final AircraftDtoMapper aircraftDtoMapper;
 

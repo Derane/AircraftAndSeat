@@ -8,8 +8,9 @@ import com.example.fligths.mapper.SeatCreateMapper;
 import com.example.fligths.mapper.SeatDtoMapper;
 import com.example.fligths.repository.SeatRepository;
 import com.example.fligths.service.SeatService;
-import jakarta.servlet.annotation.HttpConstraint;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,19 @@ public class SeatServiceImpl implements SeatService {
 	private final SeatRepository seatRepository;
 	private final SeatCreateMapper seatCreateMapper;
 	private final SeatDtoMapper seatDtoMapper;
+
 	@Override
-	public List<SeatDto> getAll() {
+	public Page<SeatDto> findAll(Pageable pageable) {
+		return seatRepository.findAll(pageable)
+				.map(seatDtoMapper::map);
+/*		return seatRepository.findAll()
+				.stream()
+				.map(entity -> new SeatDto(
+						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()))
+				.toList();*/
+	}
+
+	public List<SeatDto> findAll() {
 		return seatRepository.findAll()
 				.stream()
 				.map(entity -> new SeatDto(
@@ -49,6 +61,24 @@ public class SeatServiceImpl implements SeatService {
 				.map(seatRepository::save)
 				.map(seatDtoMapper::map)
 				.orElseThrow();
+	}
+
+	@Transactional
+	@Override
+	public Optional<SeatDto> update(Integer id, SeatCreateDto seatCreateDto) {
+		return seatRepository.findById(id)
+				.map(entity -> seatCreateMapper.map(seatCreateDto, entity))
+				.map(seatRepository::save)
+				.map(seatDtoMapper::map);
+	}
+
+	@Override
+	public boolean delete(Integer id) {
+		return seatRepository.findById(id)
+				.map(entity -> {
+					seatRepository.delete(entity);
+					return true;
+				}).orElse(false);
 	}
 
 }
