@@ -1,4 +1,4 @@
-package com.example.fligths.repository.impl;
+package com.example.fligths.repository;
 
 import com.example.fligths.entity.Aircraft;
 import org.springframework.data.repository.CrudRepository;

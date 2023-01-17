@@ -1,8 +1,7 @@
 package com.example.fligths.service.impl;
 
-import com.example.fligths.controller.AircraftController;
 import com.example.fligths.dto.AircraftDto;
-import com.example.fligths.repository.impl.AircraftRepository;
+import com.example.fligths.repository.AircraftRepository;
 import com.example.fligths.service.AircraftService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
