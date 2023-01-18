@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface SeatRepository extends JpaRepository<Seat, Integer> {
 
-	List<Seat> findAll();
-
 	Seat findByIdAndSeatNo(Integer id, String seatNo);
 
-	Seat findByIdAndAircraft_Id(Integer id, Integer aircraft);
+	Seat findByIdAndAircraftId(Integer id, Integer aircraft);
 }

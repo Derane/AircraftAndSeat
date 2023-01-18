@@ -5,13 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootApplication
-@Sql({
-		"classpath:sql/data.sql"
-})
-public class FligthsApplication {
+public class FlightsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FligthsApplication.class, args);
+		SpringApplication.run(FlightsApplication.class, args);
 	}
 
 }

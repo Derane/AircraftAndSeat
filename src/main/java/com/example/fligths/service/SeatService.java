@@ -16,13 +16,13 @@ public interface SeatService {
 
 	Optional<SeatDto> findById(Integer id);
 
+	Optional<SeatDto> findByIdAndSeatNo(Integer id, String seatNo);
+
+	Optional<SeatDto> findByIdAndAircraftId(Integer id, Integer aircraftId);
+
 	SeatDto create(SeatCreateDto seatCreateDto);
 
 	Optional<SeatDto> update(Integer id, SeatCreateDto seatCreateDto);
 
 	boolean delete(Integer id);
-
-	Optional<SeatDto> findByIdAndSeatNo(Integer id, String seatNo);
-
-	Optional<SeatDto> findByIdAndAircraftId(Integer id, Integer aircraftId);
 }

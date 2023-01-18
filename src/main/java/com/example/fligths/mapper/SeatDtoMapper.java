@@ -18,7 +18,7 @@ public class SeatDtoMapper implements Mapper<Seat, SeatDto> {
 	public SeatDto map(Seat object) {
 
 		AircraftDto aircraftDto = Optional.ofNullable(object.getAircraft())
-				.map(entity -> new AircraftDto(entity.getId(), entity.getModel()))
+				.map(aircraftDtoMapper::map)
 				.orElse(null);
 
 		return new SeatDto(

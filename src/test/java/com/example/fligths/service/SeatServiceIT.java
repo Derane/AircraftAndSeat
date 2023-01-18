@@ -23,8 +23,9 @@ public class SeatServiceIT extends IntegrationTestBase {
 	private static final Integer SEAT_1 = 1;
 	private static final Integer SEAT_3 = 3;
 	private static final Integer AIRCRAFT_1 = 1;
+	private static final String MODEL_AIRCRAFT_1 = "Boeing 777-300";
 
-	private final SeatServiceImpl seatService;
+	private final SeatService seatService;
 
 	@Test
 	void findAll() {
@@ -37,6 +38,24 @@ public class SeatServiceIT extends IntegrationTestBase {
 		Optional<SeatDto> maybeSeat = seatService.findById(SEAT_1);
 		assertTrue(maybeSeat.isPresent());
 		maybeSeat.ifPresent(seat -> assertEquals("A1", seat.seatNo()));
+	}
+
+	@Test
+	void findByIdAndSeatNo() {
+		Optional<SeatDto> maybeSeat = seatService.findByIdAndSeatNo(SEAT_1, "A1");
+		assertTrue(maybeSeat.isPresent());
+		maybeSeat.ifPresent(seat -> assertEquals("A1", seat.seatNo()));
+	}
+
+	@Test
+	void findByIdAndAircraftId() {
+		Optional<SeatDto> maybeSeat = seatService.findByIdAndAircraftId(SEAT_1, 1);
+		assertTrue(maybeSeat.isPresent());
+		maybeSeat.ifPresent(seat -> {
+			assertThat(seat.seatNo()).isEqualTo("A1");
+			assertThat(seat.aircraftDto().model()).isEqualTo(MODEL_AIRCRAFT_1);
+			assertThat(seat.aircraftDto().id()).isEqualTo(AIRCRAFT_1);
+		});
 	}
 
 	@Test

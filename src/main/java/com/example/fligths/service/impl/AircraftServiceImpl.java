@@ -1,6 +1,7 @@
 package com.example.fligths.service.impl;
 
 import com.example.fligths.dto.AircraftDto;
+import com.example.fligths.mapper.AircraftDtoMapper;
 import com.example.fligths.repository.AircraftRepository;
 import com.example.fligths.service.AircraftService;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +15,13 @@ public class AircraftServiceImpl implements AircraftService {
 
 	private final AircraftRepository aircraftRepository;
 
+	private final AircraftDtoMapper aircraftDtoMapper;
+
 	@Override
 	public List<AircraftDto> findAll() {
 		return aircraftRepository.findAll()
 				.stream()
-				.map(entity -> new AircraftDto(entity.getId(), entity.getModel()))
+				.map(aircraftDtoMapper::map)
 				.toList();
 	}
 }

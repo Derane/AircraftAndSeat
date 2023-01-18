@@ -1,6 +1,5 @@
 package com.example.fligths.service.impl;
 
-import com.example.fligths.dto.AircraftDto;
 import com.example.fligths.dto.SeatCreateDto;
 import com.example.fligths.dto.SeatDto;
 import com.example.fligths.exception.CouldNotSaveSeatException;
@@ -17,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Optional.*;
+
 @Transactional(readOnly = true)
 @Service
 @RequiredArgsConstructor
@@ -31,42 +32,36 @@ public class SeatServiceImpl implements SeatService {
 	public Page<SeatDto> findAll(Pageable pageable) {
 		return seatRepository.findAll(pageable)
 				.map(seatDtoMapper::map);
-/*		return seatRepository.findAll()
-				.stream()
-				.map(entity -> new SeatDto(
-						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()))
-				.toList();*/
 	}
 
+	@Override
 	public List<SeatDto> findAll() {
 		return seatRepository.findAll()
 				.stream()
-				.map(entity -> new SeatDto(
-						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()))
+				.map(seatDtoMapper::map)
 				.toList();
 	}
 
 	@Override
 	public Optional<SeatDto> findByIdAndSeatNo(Integer id, String seatNo) {
-		return Optional.ofNullable(seatRepository.findByIdAndSeatNo(id, seatNo)).map(seatDtoMapper::map);
+		return ofNullable(seatRepository.findByIdAndSeatNo(id, seatNo)).map(seatDtoMapper::map);
 	}
 
 	@Override
 	public Optional<SeatDto> findByIdAndAircraftId(Integer id, Integer aircraftId) {
-		return Optional.ofNullable(seatRepository.findByIdAndAircraft_Id(id, aircraftId)).map(seatDtoMapper::map);
+		return ofNullable(seatRepository.findByIdAndAircraftId(id, aircraftId)).map(seatDtoMapper::map);
 	}
 
 	@Override
 	public Optional<SeatDto> findById(Integer id) {
 		return seatRepository.findById(id)
-				.map(entity -> new SeatDto(
-						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()));
+				.map(seatDtoMapper::map);
 	}
 
 	@Transactional
 	@Override
 	public SeatDto create(SeatCreateDto seatCreateDto) {
-		return Optional.of(seatCreateDto)
+		return of(seatCreateDto)
 				.map(seatCreateMapper::map)
 				.map(seatRepository::saveAndFlush)
 				.map(seatDtoMapper::map)
@@ -82,6 +77,7 @@ public class SeatServiceImpl implements SeatService {
 				.map(seatDtoMapper::map);
 	}
 
+	@Transactional
 	@Override
 	public boolean delete(Integer id) {
 		return seatRepository.findById(id)

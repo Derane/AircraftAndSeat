@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AircraftServiceIT extends IntegrationTestBase {
 
-
 	private final AircraftService aircraftService;
 
 	@Test
