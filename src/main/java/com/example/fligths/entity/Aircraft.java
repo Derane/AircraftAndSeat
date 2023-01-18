@@ -20,12 +20,12 @@ public class Aircraft {
 	@OneToMany(mappedBy = "aircraft", fetch = FetchType.LAZY)
 	private List<Seat> seats;
 
-	public void addProduct(Seat seat) {
+	public void addSeat(Seat seat) {
 		seats.add(seat);
 		seat.setAircraft(this);
 	}
 
-	public void removeProduct(Seat seat) {
+	public void removeSeat(Seat seat) {
 		seats.remove(seat);
 		seat.setAircraft(null);
 	}
