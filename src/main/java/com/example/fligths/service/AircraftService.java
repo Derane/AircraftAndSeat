@@ -5,5 +5,5 @@ import com.example.fligths.dto.AircraftDto;
 import java.util.List;
 
 public interface AircraftService {
-	List<AircraftDto> getAll();
+	List<AircraftDto> findAll();
 }

@@ -57,6 +57,7 @@ public class SeatServiceIT extends IntegrationTestBase {
 			assertThat(actualResult.aircraftDto().id()).isEqualTo(seatCreateDto.aircraftId());
 		});
 	}
+
 	@Test
 	void delete() {
 		assertThat(seatService.delete(-2)).isEqualTo(FALSE);

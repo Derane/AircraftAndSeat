@@ -15,7 +15,7 @@ public class AircraftServiceImpl implements AircraftService {
 	private final AircraftRepository aircraftRepository;
 
 	@Override
-	public List<AircraftDto> getAll() {
+	public List<AircraftDto> findAll() {
 		return aircraftRepository.findAll()
 				.stream()
 				.map(entity -> new AircraftDto(entity.getId(), entity.getModel()))

@@ -67,7 +67,7 @@ public class SeatControllerIT extends IntegrationTestBase {
 	public void update() throws Exception {
 		SeatCreateDto seatCreateDto = new SeatCreateDto(2, "G23");
 		mockMvc.perform(put("/api/v1/seats/update/1").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(seatCreateDto)))
+						.content(objectMapper.writeValueAsString(seatCreateDto)))
 				.andExpect(status().isOk())
 				.andReturn();
 	}

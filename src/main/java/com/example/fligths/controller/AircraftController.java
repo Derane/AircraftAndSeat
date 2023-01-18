@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/aircrafts")
+@RequestMapping("api/v1/aircrafts")
 @RequiredArgsConstructor
 public class AircraftController {
 
@@ -18,6 +18,6 @@ public class AircraftController {
 
 	@GetMapping
 	public List<AircraftDto> getAll() {
-		return aircraftService.getAll();
+		return aircraftService.findAll();
 	}
 }
