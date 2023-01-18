@@ -1,3 +1,4 @@
-# AircraftAndSeat
-Unfortunately I will not have electricity by 12:00 tomorrow to add SQL script
-after this time I will add it
+### AircraftAndSeat
+I use liquibase as migration tools, which will create two necessary [Seat and Aircraft] tables that are connected many to one.
+If you want fill this tables you need start data.sql in resources/sql directory.
+In testing i use testcontainers.  If you want to run it, please make sure that the docker is started.
