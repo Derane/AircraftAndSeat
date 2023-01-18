@@ -2,7 +2,6 @@ package com.example.fligths.service;
 
 import com.example.fligths.dto.SeatCreateDto;
 import com.example.fligths.dto.SeatDto;
-import com.example.fligths.entity.Seat;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,5 +20,9 @@ public interface SeatService {
 
 	Optional<SeatDto> update(Integer id, SeatCreateDto seatCreateDto);
 
-	boolean delete (Integer id);
+	boolean delete(Integer id);
+
+	Optional<SeatDto> findByIdAndSeatNo(Integer id, String seatNo);
+
+	Optional<SeatDto> findByIdAndAircraftId(Integer id, Integer aircraftId);
 }

@@ -7,4 +7,5 @@ public interface Mapper<F, T> {
 	default T map(F fromObject, T toObject) {
 		return toObject;
 	}
+
 }

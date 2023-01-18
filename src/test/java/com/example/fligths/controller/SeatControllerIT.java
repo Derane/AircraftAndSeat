@@ -51,6 +51,20 @@ public class SeatControllerIT extends IntegrationTestBase {
 	}
 
 	@Test
+	public void findByIdAndSeatNo() throws Exception {
+		mockMvc.perform(get("/api/v1/seats/1/A1"))
+				.andExpect(status().isOk())
+				.andReturn();
+	}
+
+	@Test
+	public void findByIdAnAircraftId() throws Exception {
+		mockMvc.perform(get("/api/v1/seats/1/aircraft").header("aircraftId", 1))
+				.andExpect(status().isOk())
+				.andReturn();
+	}
+
+	@Test
 	public void delete() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/seats/delete/1"))
 				.andExpect(status().is2xxSuccessful());

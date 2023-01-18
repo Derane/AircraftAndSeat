@@ -23,7 +23,6 @@ public class SeatController {
 
 	private final SeatService seatService;
 
-
 	@GetMapping
 	public PageResponse<SeatDto> getAll(Pageable pageable) {
 		Page<SeatDto> page = seatService.findAll(pageable);
@@ -33,6 +32,18 @@ public class SeatController {
 	@GetMapping("/{id}")
 	public SeatDto findById(@PathVariable Integer id) {
 		return seatService.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
+	}
+
+	@GetMapping("/{id}/{seatNo}")
+	public SeatDto findByIdAndSeatNo(@PathVariable Integer id, @PathVariable String seatNo) {
+		return seatService.findByIdAndSeatNo(id, seatNo)
+				.orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
+	}
+
+	@GetMapping("/{id}/aircraft")
+	public SeatDto findByIdAndAircraftId(@PathVariable Integer id, @RequestHeader Integer aircraftId) {
+		return seatService.findByIdAndAircraftId(id, aircraftId)
 				.orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
 	}
 

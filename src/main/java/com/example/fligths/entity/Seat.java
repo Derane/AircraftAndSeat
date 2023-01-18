@@ -18,5 +18,5 @@ public class Seat {
 	private Aircraft aircraft;
 
 	@Column(name = "seat_no")
-	private String SeatNo;
+	private String seatNo;
 }

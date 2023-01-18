@@ -23,6 +23,7 @@ import java.util.Optional;
 public class SeatServiceImpl implements SeatService {
 
 	private final SeatRepository seatRepository;
+
 	private final SeatCreateMapper seatCreateMapper;
 	private final SeatDtoMapper seatDtoMapper;
 
@@ -43,6 +44,16 @@ public class SeatServiceImpl implements SeatService {
 				.map(entity -> new SeatDto(
 						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()))
 				.toList();
+	}
+
+	@Override
+	public Optional<SeatDto> findByIdAndSeatNo(Integer id, String seatNo) {
+		return Optional.ofNullable(seatRepository.findByIdAndSeatNo(id, seatNo)).map(seatDtoMapper::map);
+	}
+
+	@Override
+	public Optional<SeatDto> findByIdAndAircraftId(Integer id, Integer aircraftId) {
+		return Optional.ofNullable(seatRepository.findByIdAndAircraft_Id(id, aircraftId)).map(seatDtoMapper::map);
 	}
 
 	@Override
