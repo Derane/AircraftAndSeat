@@ -23,8 +23,8 @@ public class SeatControllerAdvice extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(CouldNotSaveSeatException.class)
 	@ResponseStatus(BAD_REQUEST)
-	public ApiError handleUserException(CouldNotSaveSeatException userException) {
-		return userException::getMessage;
+	public ApiError handleSeatException(CouldNotSaveSeatException seatException) {
+		return seatException::getMessage;
 	}
 
 	@Override

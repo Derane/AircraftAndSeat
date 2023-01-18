@@ -12,8 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -60,6 +59,15 @@ public class SeatControllerIT extends IntegrationTestBase {
 	@Test
 	public void findByIdAnAircraftId() throws Exception {
 		mockMvc.perform(get("/api/v1/seats/1/aircraft").header("aircraftId", 1))
+				.andExpect(status().isOk())
+				.andReturn();
+	}
+
+	@Test
+	public void update() throws Exception {
+		SeatCreateDto seatCreateDto = new SeatCreateDto(2, "G23");
+		mockMvc.perform(put("/api/v1/seats/update/1").contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(seatCreateDto)))
 				.andExpect(status().isOk())
 				.andReturn();
 	}

@@ -17,8 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SeatServiceIT extends IntegrationTestBase {
 
-	private static final Integer USER_1 = 1;
-	private static final Integer COMPANY_1 = 1;
+	private static final Integer SEAT_1 = 1;
 
 	private final SeatServiceImpl seatService;
 
@@ -30,7 +29,7 @@ public class SeatServiceIT extends IntegrationTestBase {
 
 	@Test
 	void findById() {
-		Optional<SeatDto> maybeSeat = seatService.findById(USER_1);
+		Optional<SeatDto> maybeSeat = seatService.findById(SEAT_1);
 		assertTrue(maybeSeat.isPresent());
 		maybeSeat.ifPresent(seat -> assertEquals("A1", seat.seatNo()));
 	}

@@ -9,19 +9,19 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 @IT
 @Sql({
-    "classpath:sql/data.sql"
+		"classpath:sql/data.sql"
 })
 public abstract class IntegrationTestBase {
 
-    private static final PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:latest");
+	private static final PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:latest");
 
-    @BeforeAll
-    static void runContainer() {
-        container.start();
-    }
+	@BeforeAll
+	static void runContainer() {
+		container.start();
+	}
 
-    @DynamicPropertySource
-    static void postgresProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", container::getJdbcUrl);
-    }
+	@DynamicPropertySource
+	static void postgresProperties(DynamicPropertyRegistry registry) {
+		registry.add("spring.datasource.url", container::getJdbcUrl);
+	}
 }
