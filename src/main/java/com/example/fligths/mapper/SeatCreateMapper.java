@@ -23,7 +23,7 @@ public class SeatCreateMapper implements Mapper<SeatCreateDto, Seat> {
 	}
 
 	private void copy(SeatCreateDto object, Seat seatDto) {
-		seatDto.setSeatNo(object.SeatNo());
+		seatDto.setSeatNo(object.seatNo());
 		seatDto.setAircraft(getAircraft(object.aircraftId()));
 	}
 

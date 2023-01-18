@@ -15,7 +15,7 @@ public interface SeatService {
 
 	List<SeatDto> findAll();
 
-	SeatDto findById(Integer id);
+	Optional<SeatDto> findById(Integer id);
 
 	SeatDto create(SeatCreateDto seatCreateDto);
 

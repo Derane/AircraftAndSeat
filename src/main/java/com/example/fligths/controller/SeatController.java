@@ -11,21 +11,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import javax.validation.Valid;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/seats")
+@RequestMapping("api/v1/seats")
 public class SeatController {
 
 	private final SeatService seatService;
 
-	@GetMapping
-	public List<SeatDto> getAll() {
-		return seatService.findAll();
-	}
 
 	@GetMapping
 	public PageResponse<SeatDto> getAll(Pageable pageable) {
@@ -35,7 +32,8 @@ public class SeatController {
 
 	@GetMapping("/{id}")
 	public SeatDto findById(@PathVariable Integer id) {
-		return seatService.findById(id);
+		return seatService.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
 	}
 
 	@PostMapping()
@@ -44,19 +42,18 @@ public class SeatController {
 		return seatService.create(createDto);
 	}
 
-	@PostMapping("{id}/update")
-	public SeatDto update(@PathVariable Integer id, @RequestBody SeatCreateDto createDto) {
+	@PutMapping("/update/{id}")
+	public SeatDto update(@PathVariable Integer id, @RequestBody @Valid SeatCreateDto createDto) {
 		return seatService.update(id, createDto)
 				.orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
-
 	}
 
-	@PostMapping("/{id}/delete")
-	public String delete(@PathVariable Integer id) {
+	@DeleteMapping("/delete/{id}")
+	@ResponseStatus(NO_CONTENT)
+	public void delete(@PathVariable Integer id) {
 		if (!seatService.delete(id)) {
 			throw new ResponseStatusException(NOT_FOUND);
 		}
-		return null;
 	}
 
 }

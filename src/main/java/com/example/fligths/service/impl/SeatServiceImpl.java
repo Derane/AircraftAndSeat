@@ -3,7 +3,7 @@ package com.example.fligths.service.impl;
 import com.example.fligths.dto.AircraftDto;
 import com.example.fligths.dto.SeatCreateDto;
 import com.example.fligths.dto.SeatDto;
-import com.example.fligths.exception.SeatNotFoundException;
+import com.example.fligths.exception.CouldNotSaveSeatException;
 import com.example.fligths.mapper.SeatCreateMapper;
 import com.example.fligths.mapper.SeatDtoMapper;
 import com.example.fligths.repository.SeatRepository;
@@ -46,11 +46,10 @@ public class SeatServiceImpl implements SeatService {
 	}
 
 	@Override
-	public SeatDto findById(Integer id) {
+	public Optional<SeatDto> findById(Integer id) {
 		return seatRepository.findById(id)
 				.map(entity -> new SeatDto(
-						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()))
-				.orElseThrow(SeatNotFoundException::new);
+						new AircraftDto(entity.getAircraft().getId(), entity.getAircraft().getModel()), entity.getSeatNo()));
 	}
 
 	@Transactional
@@ -58,9 +57,9 @@ public class SeatServiceImpl implements SeatService {
 	public SeatDto create(SeatCreateDto seatCreateDto) {
 		return Optional.of(seatCreateDto)
 				.map(seatCreateMapper::map)
-				.map(seatRepository::save)
+				.map(seatRepository::saveAndFlush)
 				.map(seatDtoMapper::map)
-				.orElseThrow();
+				.orElseThrow(CouldNotSaveSeatException::new);
 	}
 
 	@Transactional

@@ -1,7 +1,7 @@
 package com.example.fligths.configuration;
 
 import com.example.fligths.exception.ErrorResponse;
-import com.example.fligths.exception.SeatNotFoundException;
+import com.example.fligths.exception.CouldNotSaveSeatException;
 import com.example.fligths.model.response.ApiError;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
@@ -21,9 +21,9 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @RestControllerAdvice
 public class SeatControllerAdvice extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(SeatNotFoundException.class)
+	@ExceptionHandler(CouldNotSaveSeatException.class)
 	@ResponseStatus(BAD_REQUEST)
-	public ApiError handleUserException(SeatNotFoundException userException) {
+	public ApiError handleUserException(CouldNotSaveSeatException userException) {
 		return userException::getMessage;
 	}
 
@@ -38,7 +38,7 @@ public class SeatControllerAdvice extends ResponseEntityExceptionHandler {
 				.collect(collectingAndThen(
 						toList(),
 						details -> ResponseEntity.badRequest()
-								.body(new ErrorResponse("Have no seat with this ID", details))
+								.body(new ErrorResponse("Something wrong happens", details))
 				));
 	}
 }

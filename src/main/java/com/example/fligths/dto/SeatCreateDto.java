@@ -1,4 +1,6 @@
 package com.example.fligths.dto;
 
-public record SeatCreateDto(Integer aircraftId, String SeatNo) {
+import javax.validation.constraints.NotBlank;
+
+public record SeatCreateDto(Integer aircraftId, String seatNo) {
 }
