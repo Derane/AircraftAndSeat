@@ -3,6 +3,7 @@ package com.example.fligths.integration.service;
 import com.example.fligths.IntegrationTestBase;
 import com.example.fligths.dto.request.SeatCreateDto;
 import com.example.fligths.dto.response.SeatDto;
+import com.example.fligths.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

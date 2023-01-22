@@ -1,4 +1,4 @@
-package com.example.fligths.model.response;
+package com.example.fligths.dto.response;
 
 public interface ApiError {
 

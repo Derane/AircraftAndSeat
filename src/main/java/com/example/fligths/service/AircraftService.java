@@ -1,4 +1,4 @@
-package com.example.fligths.integration.service;
+package com.example.fligths.service;
 
 import com.example.fligths.dto.response.AircraftDto;
 

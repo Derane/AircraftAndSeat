@@ -1,4 +1,4 @@
-package com.example.fligths.integration.service.impl;
+package com.example.fligths.service.impl;
 
 import com.example.fligths.dto.request.SeatCreateDto;
 import com.example.fligths.dto.response.SeatDto;
@@ -6,7 +6,7 @@ import com.example.fligths.exception.CouldNotSaveSeatException;
 import com.example.fligths.mapper.SeatCreateMapper;
 import com.example.fligths.mapper.SeatDtoMapper;
 import com.example.fligths.repository.SeatRepository;
-import com.example.fligths.integration.service.SeatService;
+import com.example.fligths.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.Optional.*;
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 
 @Transactional(readOnly = true)
 @Service

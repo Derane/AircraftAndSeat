@@ -1,9 +1,9 @@
-package com.example.fligths.integration.controller;
+package com.example.fligths.controller;
 
-import com.example.fligths.dto.response.PageResponse;
 import com.example.fligths.dto.request.SeatCreateDto;
+import com.example.fligths.dto.response.PageResponse;
 import com.example.fligths.dto.response.SeatDto;
-import com.example.fligths.integration.service.SeatService;
+import com.example.fligths.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

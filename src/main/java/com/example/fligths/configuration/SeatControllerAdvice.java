@@ -1,8 +1,8 @@
 package com.example.fligths.configuration;
 
+import com.example.fligths.dto.response.ApiError;
 import com.example.fligths.exception.CouldNotSaveSeatException;
 import com.example.fligths.exception.ErrorResponse;
-import com.example.fligths.model.response.ApiError;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

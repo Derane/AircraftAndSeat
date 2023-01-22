@@ -2,6 +2,7 @@ package com.example.fligths.integration.service;
 
 import com.example.fligths.IntegrationTestBase;
 import com.example.fligths.dto.response.AircraftDto;
+import com.example.fligths.service.AircraftService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
