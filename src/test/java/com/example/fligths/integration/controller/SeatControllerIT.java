@@ -1,7 +1,7 @@
-package com.example.fligths.controller;
+package com.example.fligths.integration.controller;
 
 import com.example.fligths.IntegrationTestBase;
-import com.example.fligths.dto.SeatCreateDto;
+import com.example.fligths.dto.request.SeatCreateDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.hamcrest.Matchers;

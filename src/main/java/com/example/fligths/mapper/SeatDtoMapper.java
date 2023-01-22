@@ -1,7 +1,7 @@
 package com.example.fligths.mapper;
 
-import com.example.fligths.dto.AircraftDto;
-import com.example.fligths.dto.SeatDto;
+import com.example.fligths.dto.response.AircraftDto;
+import com.example.fligths.dto.response.SeatDto;
 import com.example.fligths.entity.Seat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -22,6 +22,7 @@ public class SeatDtoMapper implements Mapper<Seat, SeatDto> {
 				.orElse(null);
 
 		return new SeatDto(
+				object.getId(),
 				aircraftDto,
 				object.getSeatNo()
 		);

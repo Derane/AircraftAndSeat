@@ -1,12 +1,12 @@
-package com.example.fligths.service.impl;
+package com.example.fligths.integration.service.impl;
 
-import com.example.fligths.dto.SeatCreateDto;
-import com.example.fligths.dto.SeatDto;
+import com.example.fligths.dto.request.SeatCreateDto;
+import com.example.fligths.dto.response.SeatDto;
 import com.example.fligths.exception.CouldNotSaveSeatException;
 import com.example.fligths.mapper.SeatCreateMapper;
 import com.example.fligths.mapper.SeatDtoMapper;
 import com.example.fligths.repository.SeatRepository;
-import com.example.fligths.service.SeatService;
+import com.example.fligths.integration.service.SeatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

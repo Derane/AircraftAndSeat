@@ -1,4 +1,4 @@
-package com.example.fligths.dto;
+package com.example.fligths.dto.response;
 
 import lombok.Value;
 import org.springframework.data.domain.Page;

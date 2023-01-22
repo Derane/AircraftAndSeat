@@ -1,4 +1,4 @@
-package com.example.fligths.controller;
+package com.example.fligths.integration.controller;
 
 import com.example.fligths.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;

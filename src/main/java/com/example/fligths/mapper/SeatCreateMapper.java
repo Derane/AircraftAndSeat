@@ -1,6 +1,6 @@
 package com.example.fligths.mapper;
 
-import com.example.fligths.dto.SeatCreateDto;
+import com.example.fligths.dto.request.SeatCreateDto;
 import com.example.fligths.entity.Aircraft;
 import com.example.fligths.entity.Seat;
 import com.example.fligths.repository.AircraftRepository;

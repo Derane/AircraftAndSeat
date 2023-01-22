@@ -1,6 +1,6 @@
 package com.example.fligths.mapper;
 
-import com.example.fligths.dto.AircraftDto;
+import com.example.fligths.dto.response.AircraftDto;
 import com.example.fligths.entity.Aircraft;
 import org.springframework.stereotype.Component;
 
